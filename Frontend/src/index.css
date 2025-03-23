@@ -1,0 +1,15 @@
+
+
+
+.all-unset {
+    all: unset;
+}
+
+.button-def {
+    all: unset;
+    padding: 5px 20px;
+    background-color: blue;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}

@@ -1,0 +1,18 @@
+ my-node-app
+ ┣ 📂 src
+ ┃ ┣ 📂 config        # Configuration files (database, environment)
+ ┃ ┣ 📂 controllers   # Route handlers
+ ┃ ┣ 📂 models        # Database models (Sequelize/Knex)
+ ┃ ┣ 📂 routes        # API routes
+ ┃ ┣ 📂 services      # Business logic
+ ┃ ┣ 📂 middleware    # Express middlewares
+ ┃ ┣ 📂 utils         # Utility/helper functions
+ ┃ ┣ 📜 app.js        # Main Express app setup
+ ┣ 📜 .dockerignore   # Files to ignore in Docker
+ ┣ 📜 .env            # Environment variables
+ ┣ 📜 .gitignore      # Files to ignore in Git
+ ┣ 📜 docker-compose.yml  # Docker Compose setup
+ ┣ 📜 Dockerfile      # Docker container configuration
+ ┣ 📜 package.json    # Node.js dependencies
+ ┣ 📜 README.md       # Documentation
+ ┗ 📜 server.js       # Entry point
