@@ -2,8 +2,8 @@
 import xgboost as xgb
 import joblib
 import os
-import onnxmltools
-from onnxmltools.convert.common.data_types import FloatTensorType  # ✅ use this one
+# import onnxmltools
+# from onnxmltools.convert.common.data_types import FloatTensorType  # ✅ use this one
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
 from utils import evaluate_model
@@ -22,11 +22,11 @@ def train_xgboost(X_train, y_train, X_test, y_test):
     joblib.dump(model, "models/xgboost.pkl")
     
     # Convert to ONNX
-    initial_type = [('float_input', FloatTensorType([None, X_train.shape[1]]))]
-    onnx_model = onnxmltools.convert_xgboost(model, initial_types=initial_type)
+    # initial_type = [('float_input', FloatTensorType([None, X_train.shape[1]]))]
+    # onnx_model = onnxmltools.convert_xgboost(model, initial_types=initial_type)
     
-    with open("models/xgboost.onnx", "wb") as f:
-        f.write(onnx_model.SerializeToString())
+    # with open("models/xgboost.onnx", "wb") as f:
+    #     f.write(onnx_model.SerializeToString())
     
     return model, metrics
 
