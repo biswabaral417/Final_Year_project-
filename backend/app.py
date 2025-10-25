@@ -7,6 +7,8 @@ from app import create_app
 
 app=create_app()
 
+app.register_blueprint(user_bp)
+app.register_blueprint(heart_bp)
 
 
 if __name__ == '__main__':
