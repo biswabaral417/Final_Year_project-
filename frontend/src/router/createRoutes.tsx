@@ -1,0 +1,49 @@
+import React from "react";
+import type { RouteObject } from "react-router-dom";
+import ErrorBoundary from "../core/components/boundry/ErrorBoundry";
+
+export interface CreateRouteProps extends Omit<RouteObject, "element" | "index" | "children"> {
+  element?: React.LazyExoticComponent<React.ComponentType<any>>;
+  layout?: React.ComponentType<any>;
+  children?: RouteObject[];
+}
+
+export function createRoute({ element, layout, children, ...rest }: CreateRouteProps): RouteObject {
+    const childRoutes = children?.map(child=>child);
+
+    if (layout) {
+        const Layout = layout;
+        return {
+            ...rest,
+            element: (
+                    <React.Suspense fallback={<div>Loading...</div>}>
+                        {/* Render layout with Outlet so children get rendered inside layout */}
+                        <Layout />
+                    </React.Suspense>
+            ),
+            children: childRoutes,
+            errorElement: <ErrorBoundary />,
+        };
+    }
+
+    if (element) {
+        const Element = element;
+        return {
+            ...rest,
+            element: (
+                    <React.Suspense fallback={<div>Loading...</div>}>
+                        <Element />
+                    </React.Suspense>
+            ),
+            children: childRoutes,
+            errorElement: <ErrorBoundary />,
+        };
+    }
+
+    // fallback if no element or layout provided
+    return {
+        ...rest,
+        children: childRoutes,
+        errorElement: <ErrorBoundary />,
+    };
+}
